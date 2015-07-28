@@ -11,7 +11,7 @@ class Processor implements Runnable {
 		this.id = id;
 	}
 
-	public void run() {
+	public void run() { //what thread do
 		System.out.println("Starting: "+id);
 
 		try {
@@ -27,13 +27,13 @@ public class ThreadPools {
 
 	public static void main (String[] args) {
 
-		ExecutorService executor = Executors.newFixedThreadPool(2);
+		ExecutorService executor = Executors.newFixedThreadPool(3); //create thread pool instance (3 thread simultenaously)
 
 		for(int i=0; i<5; i++) {
 			executor.submit(new Processor(i));
 		}
 
-		executor.shutdown();
+		executor.shutdown(); //shut thread pool
 
 		System.out.println("All tasks submitted");
 
